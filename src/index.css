@@ -11,6 +11,7 @@ html {
 }
 
 :root {
+  --body: #f7f8fd;
   --default: #f2f4fe;
   --default-hover: #cfd7ff;
 
@@ -26,4 +27,47 @@ html {
 
   --danger: #d73737;
   --danger-opaque: #e98888;
+}
+
+html {
+  background-color: var(--body);
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+  line-height: 35px;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+p {
+  line-height: 23px;
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import "./suggestion.css";
+import Flex from "../Layout/Flex/Flex";
 import Pill from "../Pill/Pill";
 /*
 
@@ -22,17 +24,19 @@ type SuggestionProp = {
 function Suggestion({ suggestion }: SuggestionProp) {
   return (
     <div className="suggestion">
-      <h4>{suggestion.title}</h4>
-      <div>
-        <p>{suggestion.body}</p>
-        <Pill>{suggestion.type}</Pill>
-      </div>
-      <div>
-        <span className="pill">{suggestion.voteCount}</span>
-      </div>
-      <div>
-        <span className="pill">{suggestion.commentCount}</span>
-      </div>
+      <Flex>
+        <div>
+          <h4>{suggestion.title}</h4>
+          <p>{suggestion.body}</p>
+          <Pill>{suggestion.type}</Pill>
+        </div>
+        <div className="vote-count">
+          <span className="pill">{suggestion.voteCount}</span>
+        </div>
+        <div className="comment-count">
+          <span>{suggestion.commentCount}</span>
+        </div>
+      </Flex>
     </div>
   );
 }

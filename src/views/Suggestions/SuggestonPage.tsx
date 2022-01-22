@@ -1,3 +1,4 @@
+import Container from "../../components/Layout/Container/Contianer";
 import Suggestion from "../../components/Suggestion/Suggestion";
 
 function SuggestionsPage() {
@@ -12,7 +13,7 @@ function SuggestionsPage() {
   ];
 
   const sugs = suggestions.map((s) => <Suggestion suggestion={s} />);
-  return <div>{sugs}</div>;
+  return <Container>{sugs}</Container>;
 }
 
 export default SuggestionsPage;

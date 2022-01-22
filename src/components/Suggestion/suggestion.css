@@ -1,0 +1,20 @@
+.suggestion {
+  background-color: white;
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+
+.suggestion .flex {
+  flex-direction: column;
+}
+
+@media screen and (min-width: 376px) {
+  .suggestion .flex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .vote-count {
+    order: -1;
+  }
+}
