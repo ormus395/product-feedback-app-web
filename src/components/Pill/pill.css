@@ -1,0 +1,18 @@
+.pill {
+  background-color: var(--default);
+  border-radius: 100px;
+  color: var(--blue-purple);
+
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+.pill:hover {
+  background-color: var(--default-hover);
+  cursor: pointer;
+}
+
+.pill:active {
+  background-color: var(--blue-purple);
+  color: white;
+}

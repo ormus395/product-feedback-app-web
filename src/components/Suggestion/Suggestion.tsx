@@ -1,4 +1,5 @@
 import React from "react";
+import Pill from "../Pill/Pill";
 /*
 
 A suggestion has a:
@@ -20,11 +21,17 @@ type SuggestionProp = {
 
 function Suggestion({ suggestion }: SuggestionProp) {
   return (
-    <div>
+    <div className="suggestion">
       <h4>{suggestion.title}</h4>
       <div>
         <p>{suggestion.body}</p>
-        <span>{suggestion.type}</span>
+        <Pill>{suggestion.type}</Pill>
+      </div>
+      <div>
+        <span className="pill">{suggestion.voteCount}</span>
+      </div>
+      <div>
+        <span className="pill">{suggestion.commentCount}</span>
       </div>
     </div>
   );

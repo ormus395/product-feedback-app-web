@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;700&family=Roboto:wght@400;500&family=Space+Mono:wght@400;700&display=swap");
+
+html {
+  font-family: "Jost", sans-serif;
+
+  font-family: "Roboto", sans-serif;
+
+  font-family: "Space Mono", monospace;
+
+  font-size: 16px;
+}
+
+:root {
+  --default: #f2f4fe;
+  --default-hover: #cfd7ff;
+
+  --blue-purple: #4661e6;
+
+  --button-1: #ad1fea;
+  --button-1-hover: #c75af6;
+
+  --button-2-hover: #7c91f9;
+
+  --button-3: #3a4374;
+  --button-3-hover: #656ea3;
+
+  --danger: #d73737;
+  --danger-opaque: #e98888;
+}
