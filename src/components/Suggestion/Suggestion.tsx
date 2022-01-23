@@ -31,10 +31,10 @@ function Suggestion({ suggestion }: SuggestionProp) {
           <Pill>{suggestion.type}</Pill>
         </div>
         <div className="vote-count">
-          <span className="pill">{suggestion.voteCount}</span>
+          <Pill type="upvote">{suggestion.voteCount}</Pill>
         </div>
         <div className="comment-count">
-          <span>{suggestion.commentCount}</span>
+          <Pill>{suggestion.commentCount}</Pill>
         </div>
       </Flex>
     </div>
