@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import SuggestionsPage from "./views/Suggestions/SuggestonPage";
-
+import Button from "./components/Button/Button";
 function App() {
   useEffect(() => {
     fetch("http://localhost:5000/comments/3")
@@ -14,7 +14,7 @@ function App() {
   });
   return (
     <div className="App">
-      <SuggestionsPage />
+      <Button>+ Add Suggestion</Button>
     </div>
   );
 }
