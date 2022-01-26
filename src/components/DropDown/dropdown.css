@@ -12,12 +12,17 @@
   position: absolute;
 }
 
-.menu-list .flex {
-  flex-direction: column;
-}
-
 .menu-item {
   padding: 1rem;
+}
+
+.menu-item p {
+  margin: 0;
+}
+
+.menu-item .flex {
+  align-items: center;
+  justify-content: space-between;
 }
 
 .menu-item:not(:last-child) {
@@ -26,4 +31,8 @@
 .menu-item:hover {
   color: var(--button-1);
   cursor: pointer;
+}
+
+.menu-item--active {
+  color: var(--button-1);
 }

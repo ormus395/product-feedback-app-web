@@ -4,6 +4,7 @@
 // the inner text of the p will change on active filter state
 import "./dropdown.css";
 import Button from "../Button/Button";
+import Flex from "../Layout/Flex/Flex";
 import { useState } from "react";
 
 interface DropDownProps {
@@ -16,14 +17,12 @@ const DropDown = ({ options, selectDefault }: DropDownProps) => {
   const [selected, setSelected] = useState<string>(selectDefault);
 
   const optionItems = options.map((o) => {
-    console.log(o);
     return (
-      <li
-        onClick={(e) => handleSelect(e)}
-        className="menu-item"
-        data-option={o}
-      >
-        {o}
+      <li onClick={() => handleSelect(o)} className="menu-item">
+        <Flex direction="row">
+          <p>{o}</p>
+          {o === selected ? <span className="menu-item--active">X</span> : null}
+        </Flex>
       </li>
     );
   });
@@ -32,8 +31,8 @@ const DropDown = ({ options, selectDefault }: DropDownProps) => {
     setIsOpen(!isOpen);
   };
 
-  const handleSelect = (e: any): void => {
-    setSelected(e.target.dataset.option);
+  const handleSelect = (o: string): void => {
+    setSelected(o);
     setIsOpen(!isOpen);
   };
   return (
