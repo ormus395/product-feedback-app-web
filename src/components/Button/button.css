@@ -21,3 +21,11 @@
 
 .btn--danger {
 }
+
+.btn--dropdown {
+  background-color: var(--button-3);
+}
+
+.btn--dropdown:hover {
+  background-color: var(--button-3-hover);
+}

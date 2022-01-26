@@ -81,3 +81,20 @@ h4 {
 p {
   line-height: 23px;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/* 
+  General Styles
+*/
+
+.hidden {
+  display: none;
+}
