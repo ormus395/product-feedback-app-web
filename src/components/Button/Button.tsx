@@ -1,6 +1,12 @@
 import "./button.css";
 
-const Button = ({ onClick, type, children }: any) => {
+type ButtonProps = {
+  onClick: Function;
+  type?: string;
+  children: any;
+};
+
+const Button: React.FC<ButtonProps> = ({ onClick, type, children }) => {
   let typeClass: string = "";
   if (type) {
     // classname derived here

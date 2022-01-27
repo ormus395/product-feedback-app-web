@@ -1,0 +1,12 @@
+.product-card {
+  border-radius: 10px;
+  color: white;
+  max-width: 255px;
+  padding: 1.5rem;
+}
+
+.product-card--title {
+  background: linear-gradient(217deg, #ad1fea, rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, #4661e6, rgba(0, 0, 255, 0) 70.71%),
+    linear-gradient(336deg, #f49f85, rgba(255, 0, 0, 0) 70.71%);
+}

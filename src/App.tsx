@@ -4,6 +4,7 @@ import SuggestionsPage from "./views/Suggestions/SuggestonPage";
 import Button from "./components/Button/Button";
 import DropDown from "./components/DropDown/DropDown";
 import SuggestionBar from "./components/SuggestionBar/SuggestionBar";
+import ProductCard from "./components/ProductCard/ProductCard";
 function App() {
   // useEffect(() => {
   //   fetch("http://localhost:5000/comments/3")
@@ -16,7 +17,7 @@ function App() {
   // });
   return (
     <div className="App">
-      <SuggestionBar />
+      <ProductCard type="title" />
     </div>
   );
 }

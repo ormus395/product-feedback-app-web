@@ -23,7 +23,11 @@ const SuggestionBar = () => {
           <p>{0} Suggestions</p>
         </div>
         <DropDown options={options} selectDefault={options[0]} />
-        <Button>+ Add Suggestion</Button>
+        <Button
+          onClick={() => console.log("this will route to a form someday")}
+        >
+          + Add Suggestion
+        </Button>
       </Flex>
 
       {/* filter/ dropdown component */}
