@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import SuggestionsPage from "./views/Suggestions/SuggestonPage";
 import Button from "./components/Button/Button";
 import DropDown from "./components/DropDown/DropDown";
+import SuggestionBar from "./components/SuggestionBar/SuggestionBar";
 function App() {
   // useEffect(() => {
   //   fetch("http://localhost:5000/comments/3")
@@ -15,15 +16,7 @@ function App() {
   // });
   return (
     <div className="App">
-      <DropDown
-        options={[
-          "Most Upvotes",
-          "Least Upvotes",
-          "Most Comments",
-          "Least Comments",
-        ]}
-        selectDefault="Most Upvotes"
-      />
+      <SuggestionBar />
     </div>
   );
 }

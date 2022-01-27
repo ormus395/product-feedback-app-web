@@ -16,10 +16,6 @@
   padding: 1rem;
 }
 
-.menu-item p {
-  margin: 0;
-}
-
 .menu-item .flex {
   align-items: center;
   justify-content: space-between;
