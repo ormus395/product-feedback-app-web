@@ -1,10 +1,10 @@
 .pill {
   background-color: var(--default);
-  border-radius: 25%;
+  border-radius: 10px;
   color: var(--blue-purple);
 
   font-weight: bold;
-  padding: 0 0.5rem;
+  padding: 0.6rem;
 }
 
 .pill:hover {

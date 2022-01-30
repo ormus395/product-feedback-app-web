@@ -4,7 +4,8 @@ import SuggestionsPage from "./views/Suggestions/SuggestonPage";
 import Button from "./components/Button/Button";
 import DropDown from "./components/DropDown/DropDown";
 import SuggestionBar from "./components/SuggestionBar/SuggestionBar";
-import ProductCard from "./components/ProductCard/ProductCard";
+import ProductCards from "./components/ProductCards/ProductCard";
+
 function App() {
   // useEffect(() => {
   //   fetch("http://localhost:5000/comments/3")
@@ -17,7 +18,10 @@ function App() {
   // });
   return (
     <div className="App">
-      <ProductCard type="title" />
+      <ProductCards
+        title="Test Product"
+        suggestionTags={["All", "UI", "UX", "Enhancement", "Bug", "Feature"]}
+      />
     </div>
   );
 }
