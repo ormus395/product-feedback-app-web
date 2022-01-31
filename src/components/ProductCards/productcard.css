@@ -50,12 +50,19 @@
 }
 
 @media screen and (min-width: 500px) {
-  body {
-    background-color: red;
+  .product-cards__container > div {
+    margin-bottom: 1.5rem;
+  }
+
+  .product-card__title {
+    border-radius: 10px;
+    max-width: 255px;
+    padding-top: 4.3125rem;
   }
 
   .product-card__info {
     max-width: 255px;
+    position: relative;
   }
 
   .hamburger-toggle {
