@@ -104,6 +104,11 @@ li {
 /* 
   General Styles
 */
+@media screen and (min-width: 500px) {
+  .App {
+    padding-top: 3rem;
+  }
+}
 
 .hidden {
   display: none;

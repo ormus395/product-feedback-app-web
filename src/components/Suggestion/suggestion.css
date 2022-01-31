@@ -1,13 +1,23 @@
 .suggestion {
   background-color: white;
   border-radius: 5px;
+  margin-bottom: 1rem;
   padding: 1.5rem;
 }
 
 .suggestion .flex {
   /* flex-direction: column; */
   flex-wrap: wrap;
-  gap: 10px;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.suggestion-body {
+  text-overflow: ellipsis;
+}
+
+.suggestion-body p {
+  margin-bottom: 1rem;
 }
 
 .vote-count {

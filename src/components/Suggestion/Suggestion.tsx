@@ -25,8 +25,8 @@ function Suggestion({ suggestion }: SuggestionProp) {
   return (
     <div className="suggestion">
       <Flex>
-        <div>
-          <h4>{suggestion.title}</h4>
+        <div className="suggestion-body">
+          <h3>{suggestion.title}</h3>
           <p>{suggestion.body}</p>
           <Pill>{suggestion.type}</Pill>
         </div>

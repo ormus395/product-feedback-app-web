@@ -1,5 +1,7 @@
 .product-cards__container {
-  position: relative;
+  width: 100%;
+  left: 0;
+  right: 0;
 }
 
 .product-card__title {
@@ -50,6 +52,11 @@
 }
 
 @media screen and (min-width: 500px) {
+  .product-cards__container {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+  }
   .product-cards__container > div {
     margin-bottom: 1.5rem;
   }

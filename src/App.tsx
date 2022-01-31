@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-import SuggestionsPage from "./views/Suggestions/SuggestonPage";
 import Button from "./components/Button/Button";
 import DropDown from "./components/DropDown/DropDown";
 import SuggestionBar from "./components/SuggestionBar/SuggestionBar";
 import ProductCards from "./components/ProductCards/ProductCard";
+import ProductPage from "./pages/Products/ProductPage";
 
 function App() {
   // useEffect(() => {
@@ -18,10 +18,7 @@ function App() {
   // });
   return (
     <div className="App">
-      <ProductCards
-        title="Test Product"
-        suggestionTags={["All", "UI", "UX", "Enhancement", "Bug", "Feature"]}
-      />
+      <ProductPage />
     </div>
   );
 }
