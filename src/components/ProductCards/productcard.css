@@ -61,7 +61,9 @@
   }
 
   .product-card__info {
+    width: 255px;
     max-width: 255px;
+    padding: 1.5rem;
     position: relative;
   }
 
