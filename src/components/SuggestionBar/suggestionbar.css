@@ -2,6 +2,7 @@
   background-color: var(--button-3);
   padding: 0.5rem;
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .suggestion-bar .flex {

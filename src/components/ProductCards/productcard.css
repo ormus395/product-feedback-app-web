@@ -1,5 +1,6 @@
 .product-cards__container {
   width: 100%;
+  max-width: 825px;
   left: 0;
   right: 0;
 }
