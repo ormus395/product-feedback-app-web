@@ -6,9 +6,14 @@ import Flex from "../Layout/Flex/Flex";
 import Pill from "../Pill/Pill";
 import "./productcard.css";
 
+type SuggestionType = {
+  id: number;
+  title: string;
+};
+
 type ProductCardsProps = {
   title: string;
-  suggestionTags: string[];
+  suggestionTags: SuggestionType[];
 };
 
 const ProductCards: React.FC<ProductCardsProps> = ({
@@ -17,7 +22,9 @@ const ProductCards: React.FC<ProductCardsProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(true);
 
-  const suggestionPills = suggestionTags.map((sugg) => <Pill>{sugg}</Pill>);
+  const suggestionPills = suggestionTags.map((sugg) => (
+    <Pill key={sugg.id}>{sugg.title}</Pill>
+  ));
 
   return (
     <div className="product-cards__container">

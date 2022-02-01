@@ -5,37 +5,18 @@ import ProductCards from "../../components/ProductCards/ProductCard";
 import Suggestion from "../../components/Suggestion/Suggestion";
 import Container from "../../components/Layout/Container/Contianer";
 import HeaderContainer from "../../components/HeaderContainer/HeaderContainer";
+import { useParams } from "react-router-dom";
 
-const mockSuggestions = [
-  {
-    title: "This is a suggestion",
-    body: "This is a suggestion body",
-    voteCount: 10,
-    commentCount: 5,
-    type: "UI",
-  },
-  {
-    title: "This is a suggestion",
-    body: "This is a suggestion body",
-    voteCount: 10,
-    commentCount: 5,
-    type: "UI",
-  },
-  {
-    title: "This is a suggestion",
-    body: "This is a suggestion body",
-    voteCount: 10,
-    commentCount: 5,
-    type: "UI",
-  },
-  {
-    title: "This is a suggestion",
-    body: "This is a suggestion body",
-    voteCount: 10,
-    commentCount: 5,
-    type: "UI",
-  },
-];
+type SuggestionType = {
+  id: number;
+  title: string;
+};
+
+type ProductType = {
+  id: number;
+  title: string;
+  suggestionTypes: SuggestionType[];
+};
 
 /* 
 
@@ -44,23 +25,57 @@ this page will have a filter function that will change the filter and update the
 
 */
 function ProductPage() {
-  const [suggestions, setSuggestions] = useState([]);
+  let params = useParams();
+  console.log(params.productId);
+  const [product, setProduct] = useState<ProductType | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // the product page will have filter function. this will make an api call to the backend to filter
-  useEffect(() => {}, []);
+  // on mount call to product api to get initial product info like title, the product suggestion tags
+  // then make another call to suggestions endpoint to get suggestion by type, this will limit by ten
+  useEffect(() => {
+    fetch(`http://localhost:5000/products/${params.productId}`)
+      .then((response) => {
+        if (response.status === 200) return response.json();
+      })
+      .then((jsonResponse) => {
+        setIsLoaded(true);
+        setProduct(jsonResponse);
+      })
+      .catch((err) => console.log(err));
+    if (isLoaded) {
+      fetch(`http://localhost:5000/products/3/suggestions?suggestionType=all`)
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else {
+            console.log("404");
+          }
+        })
+        .then((jsonReponse) => console.log(jsonReponse))
+        .catch((err) => console.log(err));
+    }
+  }, [isLoaded]);
+
+  console.log(product);
   return (
     <>
-      <HeaderContainer>
-        <ProductCards
-          title="Test"
-          suggestionTags={["UI", "UX", "Feature", "Bug", "Enhancement"]}
-        />
-        <SuggestionBar />
-      </HeaderContainer>
-      <Container>
-        <div className="suggestions">{suggestions}</div>
-      </Container>
+      {product ? (
+        <>
+          <HeaderContainer>
+            <ProductCards
+              title={product.title}
+              suggestionTags={product.suggestionTypes}
+            />
+            <SuggestionBar />
+          </HeaderContainer>
+          <Container>
+            {/* <div className="suggestions">{suggestions}</div> */}
+          </Container>
+        </>
+      ) : (
+        <h3>Loading</h3>
+      )}
     </>
   );
 }
