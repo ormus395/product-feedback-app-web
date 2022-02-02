@@ -3,7 +3,7 @@
   width: 87%;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 900px) {
   .container {
     max-width: 825px;
   }

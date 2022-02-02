@@ -1,7 +1,7 @@
 import "./button.css";
 
 type ButtonProps = {
-  onClick: Function;
+  onClick?: Function;
   type?: string;
   children: any;
 };
@@ -16,7 +16,10 @@ const Button: React.FC<ButtonProps> = ({ onClick, type, children }) => {
     }
   }
   return (
-    <button onClick={() => onClick()} className={`btn ${typeClass}`}>
+    <button
+      onClick={onClick ? () => onClick() : undefined}
+      className={`btn ${typeClass}`}
+    >
       {children}
     </button>
   );

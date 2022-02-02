@@ -6,6 +6,15 @@ import Suggestion from "../../components/Suggestion/Suggestion";
 import Container from "../../components/Layout/Container/Contianer";
 import HeaderContainer from "../../components/HeaderContainer/HeaderContainer";
 import { useParams } from "react-router-dom";
+import NoFeedBack from "./NoFeedback";
+
+type SuggestionsType = {
+  title: string;
+  body: string;
+  type: string;
+  voteCount: number;
+  commentCount: number;
+};
 
 type SuggestionType = {
   id: number;
@@ -28,7 +37,9 @@ function ProductPage() {
   let params = useParams();
   console.log(params.productId);
   const [product, setProduct] = useState<ProductType | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isProductLoaded, setIsProductLoaded] = useState<boolean>(false);
+
+  const [suggestions, setSuggestions] = useState<SuggestionsType[]>([]);
 
   // the product page will have filter function. this will make an api call to the backend to filter
   // on mount call to product api to get initial product info like title, the product suggestion tags
@@ -37,13 +48,14 @@ function ProductPage() {
     fetch(`http://localhost:5000/products/${params.productId}`)
       .then((response) => {
         if (response.status === 200) return response.json();
+        else console.log(response.status);
       })
       .then((jsonResponse) => {
-        setIsLoaded(true);
+        setIsProductLoaded(true);
         setProduct(jsonResponse);
       })
       .catch((err) => console.log(err));
-    if (isLoaded) {
+    if (isProductLoaded) {
       fetch(`http://localhost:5000/products/3/suggestions?suggestionType=all`)
         .then((response) => {
           if (response.status === 200) {
@@ -52,12 +64,15 @@ function ProductPage() {
             console.log("404");
           }
         })
-        .then((jsonReponse) => console.log(jsonReponse))
+        .then((jsonReponse) => setSuggestions(jsonReponse))
         .catch((err) => console.log(err));
     }
-  }, [isLoaded]);
+  }, [isProductLoaded]);
 
-  console.log(product);
+  let suggestionCards;
+
+  if (suggestions)
+    suggestionCards = suggestions.map((s) => <Suggestion suggestion={s} />);
   return (
     <>
       {product ? (
@@ -70,7 +85,7 @@ function ProductPage() {
             <SuggestionBar />
           </HeaderContainer>
           <Container>
-            {/* <div className="suggestions">{suggestions}</div> */}
+            {suggestions.length > 1 ? suggestionCards : <NoFeedBack />}
           </Container>
         </>
       ) : (
