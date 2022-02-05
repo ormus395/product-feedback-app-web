@@ -2,6 +2,7 @@ import "./suggestionbar.css";
 import Button from "../Button/Button";
 import DropDown from "../DropDown/DropDown";
 import Flex from "../Layout/Flex/Flex";
+import { Link } from "react-router-dom";
 /*
 
 The suggestion bar will have a dropdown sort by component
@@ -26,7 +27,7 @@ const SuggestionBar = () => {
         <Button
           onClick={() => console.log("this will route to a form someday")}
         >
-          + Add Suggestion
+          <Link to="/new-suggestion">+ Add Suggestion</Link>
         </Button>
       </Flex>
 

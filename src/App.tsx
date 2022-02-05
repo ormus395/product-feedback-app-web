@@ -7,6 +7,7 @@ import DropDown from "./components/DropDown/DropDown";
 import SuggestionBar from "./components/SuggestionBar/SuggestionBar";
 import ProductCards from "./components/ProductCards/ProductCard";
 import ProductPage from "./pages/Products/ProductPage";
+import AddSuggestionForm from "./pages/Suggestion/AddSuggestionForm";
 import FourOhFour from "./pages/404/404";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/" element={() => <h1>Landing</h1>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/product/:productId" element={<ProductPage />} />
+        <Route path="/new-suggestion" element={<AddSuggestionForm />} />
         <Route path="*" element={<FourOhFour />} />
       </Routes>
     </div>
