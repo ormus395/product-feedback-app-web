@@ -22,6 +22,10 @@
 .btn--danger {
 }
 
+.btn--cancel {
+  background-color: var(--button-3);
+}
+
 .btn--dropdown {
   background-color: var(--button-3);
 }

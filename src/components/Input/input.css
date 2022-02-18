@@ -1,0 +1,16 @@
+input[type="text"] {
+  padding: 0.9rem;
+  background-color: var(--body);
+  border: 1px solid var(--body);
+  transition: border 200ms ease;
+}
+
+input[type="text"]:hover {
+  cursor: pointer;
+  border: 1px solid var(--blue-purple);
+}
+
+input[type="text"]:focus {
+  border: 1px solid var(--blue-purple);
+  outline: none;
+}

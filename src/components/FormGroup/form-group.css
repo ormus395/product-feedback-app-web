@@ -1,0 +1,28 @@
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  color: var(--button-3);
+  font-weight: 700;
+}
+
+.form-group textarea {
+  max-height: 150px;
+}
+
+.form-group textarea,
+select {
+  border: 1px solid var(--body);
+  background-color: var(--body);
+  cursor: pointer;
+  transition: border 200ms ease;
+}
+
+.form-group textarea:hover,
+select:hover,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 1px solid var(--blue-purple);
+}

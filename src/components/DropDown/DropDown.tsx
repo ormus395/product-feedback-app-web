@@ -37,7 +37,7 @@ const DropDown = ({ options, selectDefault }: DropDownProps) => {
   };
   return (
     <div className="dropdown">
-      <Button type="dropdown" onClick={handleOpen}>
+      <Button flavor="dropdown" onClick={handleOpen}>
         Sort by: {selected}
       </Button>
       <ul className={`menu-list ${isOpen ? null : "hidden"}`}>{optionItems}</ul>
