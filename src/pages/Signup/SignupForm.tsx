@@ -1,13 +1,13 @@
 import { useFormik } from "formik";
-import React from "react";
+import Validator from "../../utils/formikValidators";
 import Button from "../../components/Button/Button";
 import Form from "../../components/Form/Form";
 import FormGroup from "../../components/FormGroup/FormGroup";
 import Input from "../../components/Input/Input";
-import Validator from "../../utils/formikValidators";
 
 type Errors = {
 	email?: string;
+	password?: string;
 };
 
 function validate(values: any) {
@@ -19,10 +19,14 @@ function validate(values: any) {
 		errors.email = "Not a valid email.";
 	}
 
+	if (!values.password) {
+		errors.password = "Required";
+	}
+
 	return errors;
 }
 
-function LoginForm({ handleLogin }: any) {
+function SignupForm({ handleSignup }: any) {
 	const formik = useFormik({
 		initialValues: {
 			email: "",
@@ -30,15 +34,14 @@ function LoginForm({ handleLogin }: any) {
 		},
 		validate,
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null));
-			let userInfo = Object.assign({}, values);
-			handleLogin(userInfo);
+			const user = Object.assign({}, values);
+			handleSignup(user);
 		},
 	});
 
 	return (
 		<Form handleSubmit={formik.handleSubmit}>
-			<h2>Login</h2>
+			<h2>Signup</h2>
 			<FormGroup>
 				<label htmlFor="email">Email</label>
 				<Input
@@ -52,20 +55,26 @@ function LoginForm({ handleLogin }: any) {
 					<p>{formik.errors.email}</p>
 				) : null}
 			</FormGroup>
+
 			<FormGroup>
 				<label htmlFor="password">Password</label>
 				<Input
 					name="password"
 					type="password"
 					handleChange={formik.handleChange}
+					onBlur={formik.handleBlur}
 					value={formik.values.password}
 				/>
+				{formik.touched.password && formik.errors.password ? (
+					<p>{formik.errors.password}</p>
+				) : null}
 			</FormGroup>
+
 			<FormGroup>
-				<Button type="submit">Submit</Button>
+				<Button>Submit</Button>
 			</FormGroup>
 		</Form>
 	);
 }
 
-export default LoginForm;
+export default SignupForm;

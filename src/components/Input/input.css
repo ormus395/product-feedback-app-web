@@ -1,16 +1,22 @@
-input[type="text"] {
-  padding: 0.9rem;
-  background-color: var(--body);
-  border: 1px solid var(--body);
-  transition: border 200ms ease;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+	padding: 0.9rem;
+	background-color: var(--body);
+	border: 1px solid var(--body);
+	transition: border 200ms ease;
 }
 
-input[type="text"]:hover {
-  cursor: pointer;
-  border: 1px solid var(--blue-purple);
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover {
+	cursor: pointer;
+	border: 1px solid var(--blue-purple);
 }
 
-input[type="text"]:focus {
-  border: 1px solid var(--blue-purple);
-  outline: none;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+	border: 1px solid var(--blue-purple);
+	outline: none;
 }
