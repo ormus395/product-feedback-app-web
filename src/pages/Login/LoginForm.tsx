@@ -30,7 +30,6 @@ function LoginForm({ handleLogin }: any) {
 		},
 		validate,
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null));
 			let userInfo = Object.assign({}, values);
 			handleLogin(userInfo);
 		},

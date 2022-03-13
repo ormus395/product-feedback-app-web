@@ -1,35 +1,41 @@
 .btn {
-  background-color: var(--button-1);
-  border: none;
-  border-radius: 10px;
-  color: var(--default);
-  font-weight: 700;
-  padding: 1rem;
-  transition: 0.2s ease-out;
+	background-color: var(--button-1);
+	border: none;
+	border-radius: 10px;
+	color: var(--default);
+	font-weight: 700;
+	padding: 1rem;
+	transition: 0.2s ease-out;
 }
 
 .btn:hover {
-  background-color: var(--button-1-hover);
-  cursor: pointer;
+	background-color: var(--button-1-hover);
+	cursor: pointer;
 }
 
 .btn--cta {
 }
 
 .btn--two {
+	background-color: var(--blue-purple);
+	color: white;
+}
+
+.btn--two:hover {
+	background-color: var(--button-2-hover);
 }
 
 .btn--danger {
 }
 
 .btn--cancel {
-  background-color: var(--button-3);
+	background-color: var(--button-3);
 }
 
 .btn--dropdown {
-  background-color: var(--button-3);
+	background-color: var(--button-3);
 }
 
 .btn--dropdown:hover {
-  background-color: var(--button-3-hover);
+	background-color: var(--button-3-hover);
 }

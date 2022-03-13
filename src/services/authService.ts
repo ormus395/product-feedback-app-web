@@ -12,7 +12,7 @@ export class AuthService {
 		// if token
 		// is it valid
 		// if not return false
-		let token = await this.getTokenFromStorage();
+		let token = this.getTokenFromStorage();
 		console.log(token);
 		let user = null;
 
@@ -47,7 +47,7 @@ export class AuthService {
 		return user;
 	}
 
-	async getTokenFromStorage(): Promise<string | null> {
+	getTokenFromStorage(): string | null {
 		const token = localStorage.getItem("token");
 
 		return token;
@@ -75,5 +75,9 @@ export class AuthService {
 			console.log(err);
 			throw err;
 		}
+	}
+
+	logout() {
+		localStorage.removeItem("token");
 	}
 }

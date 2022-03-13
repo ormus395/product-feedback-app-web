@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { AuthService } from "./services/authService";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import ProductPage from "./pages/Products/ProductPage";
-import AddSuggestionForm from "./pages/Suggestion/AddSuggestionForm";
+import { Link, Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import AuthContext from "./context/authContext";
+import WithAuth from "./components/WithAuth/WithAuth";
 import FourOhFour from "./pages/404/404";
-import Dashboard from "./pages/Dashboard/Dashboard";
 import LoginPage from "./pages/Login/LoginPage";
 import SignupPage from "./pages/Signup/SignupPage";
 
@@ -33,45 +32,39 @@ function App() {
 
 	useEffect(() => {
 		if (!user) {
-			authService.isAuthenticated().then((user) => {
-				if (user) {
-					setUser(user);
-				} else {
-					navigate("/login");
-				}
-			});
+			authService
+				.isAuthenticated()
+				.then((user) => {
+					if (user) {
+						setUser(user);
+						setToken(authService.getTokenFromStorage());
+					} else {
+						navigate("/login");
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+					navigate("/signup");
+				});
 		}
 	}, [user]);
 
-	const handleLogin = () => {
-		// this function will handl;e the login state, set the user after successfull login and rerender app
-	};
+	const logout = () => {
+		authService.logout();
+		setUser(null);
+		setToken(null);
 
-	const handleLogout = () => {
-		// this function will clear local storage, clear user state, and navigate user back to login form
-	};
-
-	const handleSignup = () => {
-		// this function will handle succeful signup, set user, and set token
+		navigate("/login");
 	};
 
 	return (
 		<div className="App">
 			{user ? (
-				<div className="withAuth">
-					<nav>
-						<Link to="/dashboard">Dashboard</Link>
-						<Link to="/product">Product</Link>
-						<Link to="/suggestion">Suggestion</Link>
-					</nav>
-					<Routes>
-						<Route path="/" element={() => <h1>Landing</h1>} />
-						<Route path="/dashboard" element={<Dashboard />} />
-						<Route path="/product/:productId" element={<ProductPage />} />
-						<Route path="/new-suggestion" element={<AddSuggestionForm />} />
-						<Route path="*" element={<FourOhFour />} />
-					</Routes>
-				</div>
+				<AuthContext.Provider
+					value={{ user: user, token: token, logout: logout }}
+				>
+					<WithAuth />
+				</AuthContext.Provider>
 			) : (
 				<div className="withoutAuth">
 					<nav>
@@ -79,8 +72,10 @@ function App() {
 						<Link to="/login">Login</Link>
 					</nav>
 					<Routes>
+						<Route path="/" element={() => <h1>Landing</h1>} />
 						<Route path="/login" element={<LoginPage />} />
 						<Route path="/signup" element={<SignupPage />} />
+						<Route path="*" element={<FourOhFour />} />
 					</Routes>
 				</div>
 			)}

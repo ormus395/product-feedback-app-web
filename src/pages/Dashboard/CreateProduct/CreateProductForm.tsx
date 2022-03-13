@@ -14,8 +14,6 @@ Initial suggestion form values
 
 type Errors = {
 	title?: string;
-	suggestionType?: string;
-	suggestionBody?: string;
 };
 
 const validate = (values: any) => {
@@ -25,34 +23,36 @@ const validate = (values: any) => {
 	} else if (values.title.length > 15) {
 		errors.title = "Title must be 15 characters or less.";
 	}
-
-	if (!values.suggestionType) {
-		errors.suggestionType = "Required";
-	}
-
-	if (!values.suggestionBody) {
-		errors.suggestionBody = "Required";
-	}
 };
 
-const CreateProductForm = () => {
+const CreateProductForm = ({ handleSubmit }: any) => {
 	const formik = useFormik({
 		initialValues: {
 			title: "",
-			suggestionType: "",
-			suggestionBody: "",
+			suggestionTypes: [{ title: "" }],
 		},
 		validate,
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			handleSubmit(values);
 		},
 	});
+
+	const push = () => {
+		console.log("pushed");
+		let oldValues = formik.values;
+		let newValues = {
+			...oldValues,
+			suggestionTypes: [...formik.values.suggestionTypes, { title: "" }],
+		};
+		formik.setValues(newValues);
+	};
+
 	return (
 		<Container>
 			<Form handleSubmit={formik.handleSubmit}>
-				<h2>Create New Suggestion</h2>
+				<h2>Create New Product</h2>
 				<FormGroup>
-					<label htmlFor="title">Suggestion Title</label>
+					<label htmlFor="title">Product Title</label>
 					<p>Add a short descriptive title</p>
 					<Input
 						name="title"
@@ -62,31 +62,27 @@ const CreateProductForm = () => {
 					/>
 				</FormGroup>
 				<FormGroup>
-					<label htmlFor="suggestionType">Category</label>
-					Choose a category for your suggestion
-					<select
-						name="suggestionType"
-						id="suggestionType"
-						value={formik.values.suggestionType}
-						onChange={formik.handleChange}
-					>
-						<option>Test</option>
-					</select>
+					<label htmlFor="">Suggestion Types</label>
+					<Container>
+						{formik.values.suggestionTypes.map((suggestionType, index) => (
+							<FormGroup key={index}>
+								<label htmlFor="suggestionType">Suggestion Type</label>
+								<Input
+									name={`suggestionTypes.${index}.title`}
+									type="text"
+									handleChange={formik.handleChange}
+									value={formik.values.suggestionTypes[index].title}
+								/>
+							</FormGroup>
+						))}
+						<Button flavor="two" type="button" onClick={push}>
+							Add suggestion type
+						</Button>
+					</Container>
 				</FormGroup>
+
 				<FormGroup>
-					<label htmlFor="suggestionBody">Suggestion Detail</label>
-					<p>Provide any specific details on your suggestion</p>
-					<textarea
-						name="suggestionBody"
-						id="suggestionBody"
-						cols={30}
-						rows={30}
-						onChange={formik.handleChange}
-						value={formik.values.suggestionBody}
-					></textarea>
-				</FormGroup>
-				<FormGroup>
-					<Button type="submit">Add Suggestion</Button>
+					<Button type="submit">Add Product</Button>
 				</FormGroup>
 				<FormGroup>
 					<Button type="reset" flavor="cancel">
